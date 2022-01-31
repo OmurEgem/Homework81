@@ -55,9 +55,12 @@ public class UserDaoImpl implements UserDao {
         Session session = Util.getSessionFactory().openSession();
         session.beginTransaction();
         List<User> users = session.createQuery("FROM User").getResultList();
+        for (User user : users) {
+            System.out.println("Founded " + user);
+        }
         session.getTransaction().commit();
         session.close();
-        System.out.println(users.size());
+
         return users;
     }
 
